@@ -1,3 +1,9 @@
+//environment
+process.env.NODE_ENV = 'test';
+exports.env = process.env.NODE_ENV;
+//process.env.NODE_ENV = 'production';
+//process.env.NODE_ENV = 'test';
+
 //DB name
 exports.dbname = "SURVEYGEN-";
 
@@ -9,7 +15,6 @@ exports.host = 'localhost';
 
 //session expiration variables
 exports.expirationVariables = function(env){
-
   // for 'test' environment
   if ('test' == env) {
     return { 
@@ -21,7 +26,7 @@ exports.expirationVariables = function(env){
     return {
         sessionExpiration : 1000*60*60*24*7*2,   //2weeks for remember_me
         defaultExpiration : 1000*60*30,          //30min for when remember_me expires
-         lastTimeUsedExpiration : 1000*60*15     //15min for when lastTimeUsed expires
+        lastTimeUsedExpiration : 1000*60*15      //15min for when lastTimeUsed expires
       }
   }
 }

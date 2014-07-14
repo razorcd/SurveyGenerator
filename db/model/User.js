@@ -2,9 +2,10 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
 
 var userSchema = mongoose.Schema({
-  id: {type: String, get: function(){ return this._id.toHexString(); } },
-  username: {type: String, unique: true, required:true, validate:[validateusername, "Username not valid. Must be min 3 characters"]},
-  password: {type: String, required: true, validate:[validatePass, "Password not valid. Must be min 8 characters"]}
+    id: {type: String, get: function(){ return this._id.toHexString(); } },
+    username: {type: String, unique: true, required:true, validate:[validateusername, "Username not valid. Must be min 3 characters"]},
+    password: {type: String, required: true, validate:[validatePass, "Password not valid. Must be min 8 characters"]},
+    surveys: [{type: mongoose.Schema.ObjectId, ref: 'Surveys'}] //, ref: SurveyModel.Survey
 });
 
 //check password: cb(err, result), result=true is password is correct
@@ -43,8 +44,10 @@ function validatePass(pass){
   return re.test(pass);
 }
 
+
+
 //User Model
-exports.User = function(db){
-  var Model = db.model('User', userSchema);
+exports.User = function(connection){
+  var Model = connection.model('User', userSchema);
   return Model;
 }

@@ -5,10 +5,10 @@ var flash = require("connect-flash");
 var config = require('../config');
 var secret = require('../secrets.json');
 
-//db
-var db = exports.db = require("../db/dbconnect.js")(config.dbname + process.env.NODE_ENV);
-var User = db.models.User || require('../db/model/User.js').User(db);
-var Session = db.models.Session || require('../db/model/Session.js').Session(db);
+ //db
+var db = require("../db/dbconnect.js")(config.dbname + process.env.NODE_ENV);
+var User = db.models.User;
+var Session = db.models.Session;
 
 //environment expiration variables
 var envExpVariables = config.expirationVariables(process.env.NODE_ENV);

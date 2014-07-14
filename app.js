@@ -1,7 +1,4 @@
 
-//process.env.NODE_ENV = 'production';
-process.env.NODE_ENV = 'test';
-
  // Module dependencies.
 var http = require('http');
 var path = require('path');
@@ -11,14 +8,15 @@ var methodOverride = require('method-override');
 var flash = require("connect-flash");
 //var mongoose = require('mongoose');
 
-var user = require('./routes/user.js');
-var controlpanel = require('./routes/controlpanel.js');
-var routes = require('./routes');
 var config = require('./config.js');
 var secret = require('./secrets.json');
 
-var app = express();
+//routes functions
+var user = require('./routes/user.js');
+var controlpanel = require('./routes/controlpanel.js');
+var routes = require('./routes');
 
+var app = express();
 
 // all environments
 app.set('port', config.port);
@@ -48,7 +46,7 @@ if ('test' == app.get('env')) {
   var db = require("./db/dbconnect.js")(config.dbname + process.env.NODE_ENV);
 
   //delete all users first
-  var User = db.models.User || require('./db/model/User.js').User(db);         //change  .. to . in boilerplate
+  var User = db.models.User;//db.models.User || require('./db/model/User.js').User(db);         //change  .. to . in boilerplate
   User.find().remove().exec(function(){
     //execute jasmine tests in new process
     var exec = require('child_process').exec;
@@ -81,8 +79,8 @@ app.get('/checkLoginSession', user.checkLogin, user.checkLoginSession);
 // *** test routes END ****
 
 // *** Control Panel Routes ***
+app.get('/addsurvey', controlpanel.addSurvey);
 app.get('/:user', user.checkLogin, controlpanel.main);
-
 // *** Control Panel Routes END***
 
 
