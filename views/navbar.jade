@@ -1,0 +1,13 @@
+
+div.navbar 
+  //-navbar title
+  a#title(href='/') NOTEPAD
+  
+  //-navbar login/register/logout buttons
+  if (!currentUser)
+    a#login(href='/login') LOGIN
+    span#login / 
+    a#login(href='/register') REGISTER
+  else
+    a#logout(href='/logout') LOGOUT
+    div#username=currentUser
