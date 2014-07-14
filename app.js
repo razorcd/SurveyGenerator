@@ -11,7 +11,8 @@ var methodOverride = require('method-override');
 var flash = require("connect-flash");
 //var mongoose = require('mongoose');
 
-var user = require('./routes/user');
+var user = require('./routes/user.js');
+var controlpanel = require('./routes/controlpanel.js');
 var routes = require('./routes');
 var config = require('./config.js');
 var secret = require('./secrets.json');
@@ -78,6 +79,11 @@ app.get('/redirect', user.redirect);
 app.get('/expirations',user.expirations );
 app.get('/checkLoginSession', user.checkLogin, user.checkLoginSession);
 // *** test routes END ****
+
+// *** Control Panel Routes ***
+app.get('/:user', user.checkLogin, controlpanel.main);
+
+// *** Control Panel Routes END***
 
 
 

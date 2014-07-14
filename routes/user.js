@@ -1,5 +1,5 @@
 //dependencies
-var mongoose = require('mongoose');
+//var mongoose = require('mongoose');
 var jwt = require('jwt-simple');
 var flash = require("connect-flash");
 var config = require('../config');
@@ -11,7 +11,7 @@ var User = db.models.User || require('../db/model/User.js').User(db);
 var Session = db.models.Session || require('../db/model/Session.js').Session(db);
 
 //environment expiration variables
-var envExpVariables = require('../config.js').expirationVariables(process.env.NODE_ENV);
+var envExpVariables = config.expirationVariables(process.env.NODE_ENV);
 
 
 // *** ROUTES FUNCTION ***
@@ -179,7 +179,7 @@ exports.login = function(userLogin, req, res, next){
                 //res.cookie('logintoken', encodedCookieToken, { expires: new Date(Date.now() + 2 * 604800000), path: '/' }) //2*7days
               ///else  
               res.cookie('logintoken', encodedCookieToken, {path: '/'} ) 
-              res.redirect("/checkLoginSession");
+              res.redirect("/" + session.username);
             })
           });
 

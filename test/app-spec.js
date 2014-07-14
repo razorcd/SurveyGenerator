@@ -6,10 +6,10 @@ var request = request.defaults({jar: j});
 var config = require('../config.js');
 
 var host = 'http://'+ config.host +':' + config.port;
-console.log("Running on: ", host);
+console.log("Test running on: ", host);
 
 
-describe("test User register/login/logout:", function(){
+describe("Test User register/login/logout:", function(){
 
   describe("test GET /", function() {
 
@@ -249,10 +249,10 @@ describe("test User register/login/logout:", function(){
         cookie = j.getCookies(host+"/login");
         expect(cookie).toBeDefined();
         expect(cookie).toMatch(/logintoken/i);
-        expect(res.req.path).toBe('/checkLoginSession');
+        expect(res.req.path).toBe('/razor');
         done();
       })
-    })
+    });
 
 
     it("should stay logged in if after login was completed", function(done){
@@ -262,13 +262,27 @@ describe("test User register/login/logout:", function(){
         expect(res.req.path).toBe('/checkLoginSession');
         done();
       })
-    })
+    });
 
 
-    it("should recreate logintoken if logginin again when session already exists for current username", function(done){
+    it("control panel should be accessible only for current user (razor)", function(done) {
+       var options = {
+        url : host+"/razz",
+        method: "GET",
+        followAllRedirects: true
+      }
+      request(options, function(err, res){
+        expect(res.statusCode).toBe(200);
+        expect(res.req.path).toBe('/razor');
+        done();
+      })
+    });
+
+
+    it("should recreate logintoken if logging in again when session already exists for current username", function(done){
       var token;
       //getting the existing logintoken
-      request.get(host+'/checkLoginSession', function(err,res){
+      request.get(host+'/razor', function(err,res){
         expect(res.statusCode).toBe(200);
         expect(res.body).toMatch(/session OK/i);
         cookie = j.getCookies(host+"/login");
@@ -294,7 +308,7 @@ describe("test User register/login/logout:", function(){
         expect(cookie).toBeDefined();
         expect(cookie).toMatch(/logintoken/i);
         expect(token).not.toBe(cookie[1].value);
-        expect(res.req.path).toBe('/checkLoginSession');
+        expect(res.req.path).toBe('/razor');
         done();
       })
 
@@ -350,7 +364,7 @@ describe("test User register/login/logout:", function(){
         cookie = j.getCookies(host+"/login");
         expect(cookie).toBeDefined();
         expect(cookie).toMatch(/logintoken/i);
-        expect(res.req.path).toBe('/checkLoginSession');
+        expect(res.req.path).toBe('/razor');
         console.log("\nLogged in at: ", new Date().toJSON());
         done();
       })
@@ -517,7 +531,7 @@ describe("test User register/login/logout:", function(){
         cookie = j.getCookies(host+"/login");
         expect(cookie).toBeDefined();
         expect(cookie).toMatch(/logintoken/i);
-        expect(res.req.path).toBe('/checkLoginSession');
+        expect(res.req.path).toBe('/razor');
         console.log("\nLogged in (with remember_me:true) at: ", new Date().toJSON());
         done();
       })
@@ -573,3 +587,4 @@ describe("test User register/login/logout:", function(){
 
 
 });
+

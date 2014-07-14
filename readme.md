@@ -1,4 +1,4 @@
-#WEBAPP Boilerplate
+#Survey generator Web App
 
 Node/Express/Jade/Mongoose/Jasmine
 
