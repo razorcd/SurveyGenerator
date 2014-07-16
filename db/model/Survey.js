@@ -4,12 +4,12 @@ var mongoose = require('mongoose');
 var surveySchema = mongoose.Schema({
   id: {type: String, get: function(){ return this._id.toHexString(); } },
   title: {type: String, required: true },
-  // questions: [{
-  //               question:String,
-  //               widget: String,
-  //               data: Array
-  //             }],
-   publicLink: String
+  fields: [{
+              question:String,
+              answerType: String,
+              data: Array
+           }],
+   //publicLink: String
    //creator: {type: mongoose.Schema.ObjectId, ref: User }
 });
 

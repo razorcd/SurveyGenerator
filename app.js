@@ -79,7 +79,9 @@ app.get('/checkLoginSession', user.checkLogin, user.checkLoginSession);
 // *** test routes END ****
 
 // *** Control Panel Routes ***
-app.get('/addsurvey', controlpanel.addSurvey);
+app.get('/:user/addnewsurvey', controlpanel.addNewSurvey);
+app.get('/getSurveyField/:selectedField', controlpanel.getSurveyField);
+app.post('/addsurvey', controlpanel.addSurvey);
 app.get('/:user', user.checkLogin, controlpanel.main);
 // *** Control Panel Routes END***
 

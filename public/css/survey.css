@@ -1,0 +1,79 @@
+
+.survey {
+	background-color: #E9E9E9;
+  width: 750px;
+  margin: 10px auto;
+  padding: 0 15px;
+  height: 36px;
+  border: 1px #E9E9E9 solid;
+  border-radius: 25px;
+}
+
+.survey:hover {
+  border: 1px #91DEFB solid;
+}
+
+.nr {
+  background-color: #0AB5F5;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  font-weight: bold;
+  float:left;
+  margin:7px;
+  padding:3px;
+  color:white;
+  border-radius: 100px;
+  cursor: default;
+}
+
+.title {
+  margin: 7px;
+  padding: 3px;
+  float: left;
+  height:16px;
+  width:540px;
+  cursor:default;
+}
+
+.survey .button {
+  float: right;
+  padding: 3px 5px;
+  margin: 7px 2px;
+  height:30px;
+  background-color: #0AB5F5;
+  color: white;
+  height:16px;
+  width: 60px;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 15px;
+}
+
+.survey .button:hover {
+  background-color: white;
+  color:black;
+  cursor:pointer;
+}
+
+.addnewbutton {
+  float: right;
+  padding: 3px 5px;
+  margin: 7px 2px;
+  height:30px;
+  background-color: #0AB5F5;
+  color: white;
+  height:16px;
+  width: 155px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 15px;
+}
+
+.addnewbutton:hover {
+  background-color: white;
+  color:black;
+  cursor:pointer;
+  border: 1px solid #0AB5F5;
+}

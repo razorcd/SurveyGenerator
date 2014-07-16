@@ -1,0 +1,155 @@
+
+mixin question
+  div.question
+    label(for 'question') Question:
+    input
+
+
+mixin answertype
+  div.answertype
+    +options()
+
+mixin options
+  label(for 'selectType') Answer type:
+  select#addnewselect(name='selectType')
+    option(value="textinputedit") textInput
+    option(value="minmaxinputedit") minMaxInput
+    option(value="multiplechecksedit") multipleChecks
+    option(value="singleradioedit") singleRadio
+    option(value="textareaedit") textarea
+
+
+
+//-EDIT
+
+//-for first load
+mixin textInputEditFull
+  +question()
+  div.answer(name='textInput')
+    label(for 'answer', contenteditable='true') Answer:
+    input(disabled)
+  +answertype()
+
+mixin textInputEdit
+  div.answer(name='textInput')
+    label(for 'answer', contenteditable='true') Answer:
+    input(disabled)
+
+
+mixin minMaxInputEdit
+  div.answer(name='minMaxInput')
+    div.min
+      label(for 'min', contenteditable='true') Min:
+      input(disabled)
+    div.max
+      label(for 'max', contenteditable='true') Max:
+      input(disabled)
+
+
+mixin multipleChecksEdit
+  div.answer(name='multipleChecks')
+    div.check
+      label(contenteditable='true') Check 1
+      input(type='checkbox')
+    div.check
+      label(contenteditable='true') Check 2
+      input(type='checkbox')
+    div.check
+      label(contenteditable='true') Check 3
+      input(type='checkbox')
+
+mixin singleRadioEdit
+  -var name='q' + Date.now()
+  dib.answer(name='singleRadio')
+    div.radio
+      label(contenteditable='true') Radio 1
+      input(type="radio" name=name)
+    div.radio
+      label(contenteditable='true') Radio 2
+      input(type="radio" name=name)
+    div.radio
+      label(contenteditable='true') Radio 3
+      input(type="radio" name=name)
+
+mixin textareaEdit
+  dib.answer(name='textarea')
+    label(contenteditable='true') Answer:
+    textarea(disabled)
+
+
+//- non EDIT
+mixin textInput
+  div.answer
+    label Answer:
+    input
+
+mixin minMaxInput
+  div.answer
+    div.min
+      label Min:
+      input
+    div.max
+      label Max:
+      input
+
+mixin multipleChecks
+  div.answer
+    div.check
+      label Check 1
+      input(type='checkbox')
+    div.check
+      label Check 2
+      input(type='checkbox')
+    div.check
+      label Check 3
+      input(type='checkbox')
+
+mixin singleRadio
+  -var name='q' + Date.now()
+  dib.answer
+    div.radio
+      label Radio 1
+      input(type="radio" name=name)
+    div.radio
+      label Radio 2
+      input(type="radio" name=name)
+    div.radio
+      label Radio 3
+      input(type="radio" name=name)
+
+mixin textarea
+  dib.answer
+    label(contenteditable='true') Answer:
+    textarea
+
+
+
+
+//-link
+
+
+case selectedField
+  when 'textinputeditfull'
+    +textInputEditFull()
+  when 'textinputedit'
+    +textInputEdit()
+  when 'minmaxinputedit'
+    +minMaxInputEdit()
+  when 'multiplechecksedit'
+    +multipleChecksEdit()
+  when 'singleradioedit'
+    +singleRadioEdit()
+  when 'textareaedit'
+    +textareaEdit()
+  when 'textinput'
+    +textInput()
+  when 'minmaxinput'
+    +minMaxInput()
+  when 'multiplechecks'
+    +multipleChecks()
+  when 'singleradio'
+    +singleRadio()
+  when 'textarea'
+    +textarea()
+  default
+    div

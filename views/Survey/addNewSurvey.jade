@@ -1,0 +1,23 @@
+extends ../layout
+include surveyFields
+block styles
+  link(rel='stylesheet' href='../css/addNewSurvey.css')
+block content
+  h2 Add New Survey
+  div.survey-editor
+    div.title
+      label(for 'title') Survey Title:
+      input(name='title')
+    div.surveyListEdit
+      ol
+        
+    button#addnewquestion Add New Question
+    div
+      a#resetNewSurvey.newSurveySaveCancelReset(href='/qqq/addnewsurvey') RESET
+
+      //-TODO: redirect to /cp
+      a#cancelNewSurvey.newSurveySaveCancelReset(href='/qqq') CANCEL       
+      a#saveNewSurvey.newSurveySaveCancelReset SAVE
+
+    script(type='application/javascript' src='../javascripts/addNewSurvey.js')
+

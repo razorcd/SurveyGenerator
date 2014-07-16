@@ -1,0 +1,48 @@
+.survey-editor{
+  width:930px;
+  padding:10px;
+}
+
+.title {
+  font-size: 14pt;
+  margin: 10px 20px;
+}
+
+  .title label {
+    margin: 0 10px;
+  }
+  .title input {
+    width:700px;
+    font-size: 16pt;
+
+  }
+
+.surveyListEdit li{
+  border-left: 1px solid #ccc;
+  padding: 20px;
+  margin: 20px;
+}
+
+.newSurveySaveCancelReset {
+  float: left;
+  padding: 3px 5px;
+  margin: 7px 2px;
+  height:30px;
+  background-color: #0AB5F5;
+  color: white;
+  height:16px;
+  width: 155px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 15px;
+  border: 1px solid #0AB5F5;
+}
+
+
+.newSurveySaveCancelReset:hover {
+  background-color: white;
+  color:black;
+  cursor:pointer;
+  border: 1px solid #0AB5F5;
+}

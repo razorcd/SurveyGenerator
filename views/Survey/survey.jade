@@ -1,0 +1,12 @@
+//-link(rel='stylesheet', href='/css/survey.css')
+
+a.addnewbutton(href='/' + currentUser + '/addnewsurvey') Add New Survey
+h2 Surveys:
+
+div.surveylist
+  each s, index in surveylist
+    div.survey
+      div.nr=(index+1)
+      div.title=s.title
+      div.button delete
+      div.button edit

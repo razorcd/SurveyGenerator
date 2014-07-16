@@ -1,6 +1,10 @@
 extends ../layout
 
+block styles
+  link(rel='stylesheet', href='/css/survey.css')
+
 block content
-  div.registration
-    h1 Session OK
-    p Logged in as #{currentUser}
+  div.top
+    h1 Session OK !
+    p Logged in ass #{currentUser}
+  include ../Survey/survey.jade

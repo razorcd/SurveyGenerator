@@ -25,7 +25,7 @@ userSchema.methods.parseValidationError = function(){
 
 //encrypt password before saving to db
 userSchema.pre('save', function(next){
-  this.password = bcrypt.hashSync(this.password);
+  if (this.password) this.password = bcrypt.hashSync(this.password);
   next();
 })
 

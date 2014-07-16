@@ -4,6 +4,7 @@
   padding:10px;
   height:30px;
   /*width:100%;*/
+  background-color: #888;
   background: -webkit-gradient(linear, left top, left bottom, from(#ccc), to(#777));
   background: -moz-linear-gradient(top,  #bbb,  #888);
 }
